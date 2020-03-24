@@ -1,0 +1,47 @@
+<ion-content>
+    <div class="structure">
+        <div *ngFor="let mensaje of mensajes" class="card">
+            <div class="card__content">
+                <div class="card__content__header">
+                    <div>
+                        <p class="card__content__header__client">{{ mensaje.opportunity.Cliente__c }}</p>
+                    </div>
+                    <div>
+                        <p class="card__content__header__type">{{ mensaje.opportunity.type }}</p>
+                    </div>
+                </div>
+                <div class="card__content__main">
+                    <div>
+                        <h2 class="card__content__main__header">{{ mensaje.opportunity.Name }}</h2>
+                    </div>
+                    <br>
+
+                    <div class="card__content__main__description" [ngClass]="{'show-less': showShortDesciption}">
+                        <p>{{ mensaje.opportunity.Description }}</p>
+                    </div>
+                    <button class="readMore" type="button" (click)="alterDescriptionText()">
+                {{ showShortDesciption ? 'SHOW ALL': 'SHOW LESS' }}
+              </button>
+                </div>
+                <div class="card__content__footer">
+                    <div>
+                        <p class="card__content__footer__phase">FASE 1</p>
+                    </div>
+                    <div>
+                        <div>
+                            <p class="card__content__footer__date">Close Date: {{ mensaje.opportunity.CloseDate }}</p>
+                        </div>
+                        <div>
+                            <p class="card__content__footer__amount">Amount {{ mensaje.opportunity.Amount }} €</p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="actionBtns">
+                    <button class="declineBtn">Rechazar</button>
+                    <button class="aceptBtn">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</ion-content>

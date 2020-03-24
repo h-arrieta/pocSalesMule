@@ -1,0 +1,223 @@
+.show-less {
+    height: 50px;
+    overflow: hidden;
+    padding: 1rem;
+}
+
+.readMore {
+    font-size: 10px;
+    color: rgba(73, 131, 170, 0.781);
+    background-color: transparent;
+}
+
+.readMore:disabled {
+    background-color: transparent;
+    border: transparent;
+}
+
+.card {
+    /* border-radius: 8px; */
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    width: 98vw;
+    /* border: 1px solid rgb(211, 208, 208); */
+    /* box-shadow: 1px solid blue; */
+}
+
+.cardBody {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    border-radius: 8px;
+}
+
+.icon {
+    width: 40px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.cardContainer {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 10px;
+}
+
+.cardHeader {
+    color: rgb(59, 56, 56);
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    height: 20px;
+}
+
+.headerClient {
+    font-size: 12px;
+    font-weight: 600;
+    padding-right: 5px;
+}
+
+.headerType {
+    font-size: 12px;
+    color: rgb(134, 128, 128);
+    font-weight: 600;
+    padding-right: 5px;
+}
+
+.cardMain {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.mainTitle {
+    color: rgb(65, 63, 63);
+    font-size: 18px;
+    font-weight: 600;
+    padding: 0px;
+    margin: 0px;
+}
+
+.mainDescription {
+    border-top: 1px solid rgb(145, 143, 143);
+    border-bottom: 1px solid rgb(145, 143, 143);
+    padding: 10px 0;
+    margin: 10px 0;
+    font-size: 16px;
+    color: rgb(65, 63, 63);
+}
+
+.cardFooter {
+    color: rgb(41, 41, 40);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.footerDate {
+    font-weight: 600;
+    font-size: 12px;
+    display: flex;
+    font-weight: 500;
+}
+
+.footerAmount {
+    font-weight: 600;
+    font-size: 12px;
+    display: flex;
+    font-weight: 500;
+}
+
+.actionBtns {
+    display: flex;
+    justify-content: center;
+}
+
+.aceptBtn {
+    border-radius: 8px;
+    width: 100px;
+    height: 30px;
+    background-color: green;
+    color: white;
+}
+
+.declineBtn {
+    border-radius: 8px;
+    width: 100px;
+    height: 30px;
+    background-color: red;
+    color: white;
+}
+
+.structure {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header {
+    color: rgb(235, 232, 232);
+    height: 30px;
+}
+
+.card {
+    margin-top: 20px;
+    border-radius: 8px;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    width: 98vw;
+    border: 1px solid rgb(255, 255, 255);
+    box-shadow: 2px 4px #f1efef;
+    &__content {
+        color: rgb(59, 56, 56);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: auto;
+        &__header {
+            color: rgb(59, 56, 56);
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            height: 20px;
+            &__client {
+                display: flex;
+                font-size: 12px;
+                font-weight: 600;
+                padding-right: 5px;
+            }
+            &__type {
+                display: flex;
+                font-size: 12px;
+                color: rgb(134, 128, 128);
+                font-weight: 600;
+                padding-right: 5px;
+            }
+        }
+        &__main {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            &__header {
+                display: flex;
+                color: rgb(65, 63, 63);
+                font-size: 18px;
+                font-weight: 600;
+                padding: 0px;
+                margin: 0px;
+            }
+            &__description {
+                display: flex;
+                font-size: 16px;
+                color: rgb(65, 63, 63);
+            }
+        }
+        &__footer {
+            color: rgb(41, 41, 40);
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            &__date {
+                font-weight: 600;
+                font-size: 12px;
+                display: flex;
+                font-weight: 500;
+            }
+            &__amount {
+                font-weight: 600;
+                font-size: 12px;
+                display: flex;
+                font-weight: 500;
+            }
+        }
+    }
+}

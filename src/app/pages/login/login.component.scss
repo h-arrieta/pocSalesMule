@@ -1,0 +1,100 @@
+.loginContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 99vh;
+    width: 88vw;
+}
+
+.image {
+    width: 60px;
+    margin-bottom: 30px;
+}
+
+.inputBtn {
+    border: none;
+    border-radius: 8px;
+    width: 80vw;
+    height: 44px;
+    background-color: blue;
+    color: white;
+}
+
+.inputBtn--state-success {
+    border: none;
+    border-radius: 8px;
+    width: 80vw;
+    height: 44px;
+    background-color: rgb(42, 42, 78);
+    color: rgb(88, 20, 20);
+}
+
+.placeholder {
+    /* border: none; */
+    width: 80vw;
+}
+
+.loginHeader {
+    height: 250px;
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.imageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.placeholder {
+    color: rgb(187, 177, 177);
+    /* border-top: black;
+    border-left: black;
+    border-right: black;
+    border-bottom: none; */
+}
+
+.form {
+    padding-bottom: 100px;
+}
+
+input:focus {
+    outline: none;
+}
+
+form::placeholder {
+    color: rgb(133, 29, 29);
+}
+
+input {
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: groove;
+    background-color: rgb(255, 255, 255);
+}
+
+.structure {
+    display: flex;
+    justify-content: center;
+}
+
+.formFirstPlace {
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-size: 44px;
+    font-weight: 400;
+    color: rgb(95, 94, 94);
+}
+
+h4 {
+    font-weight: 400;
+    font-size: 22px;
+    color: rgb(95, 94, 94);
+}

@@ -18,6 +18,7 @@ export class CardComponent implements OnInit {
   selectedOnes: any[] = [];
   treatmentOnes: any[] = [];
   displayCards: Array<TreatCard> = [];
+  isChecked = false;
 
   ngOnInit() {
     // tslint:disable-next-line: align
@@ -49,6 +50,7 @@ export class CardComponent implements OnInit {
       }
     // tslint:disable-next-line: align
     });
+    this.isChecked = this.displayCards.some(element => element.isTreated === true);
     console.log(this.displayCards);
  }
 

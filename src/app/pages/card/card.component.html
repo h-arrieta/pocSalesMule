@@ -2,42 +2,41 @@
     <ion-title>Oportunities</ion-title>
 </ion-header> -->
 <ion-content>
-    <!-- *ngIf="!message.isTreated || message.treatment !== null" -->
-    <!-- <a [routerLink]="['/details']" routerLinkActive="active"> -->
-    <ng-container *ngFor="let displayCard of displayCards">
-        <div class="card">
-            <div class="card__icon">
-                <button (click)=changeTreatStatus(displayCard.cardData.opportunity.Id)>treated</button>
-                <!-- <button (click)=x(message.opportunity.id, 'accepted')>treated</button> -->
-                <!-- <img (click)="displayBtn()" class="card__icon__image" src="https://cdn0.iconfinder.com/data/icons/simply-orange-1/128/currencysvg-512.png"> -->
-            </div>
-            <div class="card__content">
-                <div class="card__content__header">
-                    <p class="card__content__header__client">{{ displayCard.cardData.opportunity.Name }}</p>
-                    <p class="card__content__header__type card__content__header__type--state-budget">{{ displayCard.cardData.opportunity.approval_type__c }}</p>
-                </div>
-                <div class="card__content__main">
-                    <div>
-                        <h2 class="card__content__main__header">{{ displayCard.cardData.opportunity.Asunto__c }}</h2>
+    <div class="cards">
+        <!-- *ngIf="!message.isTreated || message.treatment !== null" -->
+        <!-- <a [routerLink]="['/details']" routerLinkActive="active"> -->
+        <ng-container *ngFor="let displayCard of displayCards">
+            <div class="card">
+                <div class="card__icon">
+                    <div class="card__icon--inner" [ngClass]="{'card__icon--active': displayCard.isTreated }">
+                        <!-- <button (click)=changeTreatStatus(displayCard.cardData.opportunity.Id)>treated</button> -->
+                        <!-- <button (click)=x(message.opportunity.id, 'accepted')>treated</button> -->
+                        <img (click)="changeTreatStatus(displayCard.cardData.opportunity.Id)" class="card__icon__image" src="https://cdn0.iconfinder.com/data/icons/simply-orange-1/128/currencysvg-512.png">
                     </div>
-                    <div>
+                </div>
+                <div class="card__content">
+                    <div class="card__content__header">
+                        <p class="card__content__header__client">{{ displayCard.cardData.opportunity.Name }}</p>
+                        <p class="card__content__header__type card__content__header__type--state-budget">{{ displayCard.cardData.opportunity.approval_type__c }}</p>
+                    </div>
+                    <div class="card__content__main">
+                        <h2 class="card__content__main__title">{{ displayCard.cardData.opportunity.Asunto__c }}</h2>
                         <p class="card__content__main__description">{{ displayCard.cardData.opportunity.Description }}</p>
                     </div>
-                </div>
-                <div class="card__content__footer">
-                    <div>
+                    <div class="card__content__footer">
                         <p class="card__content__footer__date--state-warning"> {{ displayCard.cardData.opportunity.CloseDate }}</p>
-                    </div>
-                    <div>
                         <p class="card__content__footer__amount">{{ displayCard.cardData.opportunity.Amount }} €</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </ng-container>
-    <!-- </a> -->
+        </ng-container>
 
-    <ion-fab vertical="bottom" horizontal="end" edge slot="fixed" *ngIf="isTreated === true">
+        <!-- </a> -->
+
+    </div>
+</ion-content>
+<ion-footer>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="isChecked === true">
         <ion-fab-button>
             <ion-icon name="settings"></ion-icon>
         </ion-fab-button>
@@ -48,11 +47,8 @@
             </ion-fab-button>
             <ion-fab-button (click)="reject();">
                 <!-- <ion-fab-button> -->
-                <ion-icon name="checkmark-outline">X</ion-icon>
+                <ion-icon name="close-outline">X</ion-icon>
             </ion-fab-button>
         </ion-fab-list>
     </ion-fab>
-</ion-content>
-
-<button (click)="accept()">Accept</button>
-<button (click)="reject()">Reject</button>
+</ion-footer>

@@ -1,100 +1,129 @@
-.card {
-    margin-top: 20px;
-    border-radius: 8px;
-    padding: 5px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
-    width: 98vw;
-    border: 1px solid rgb(255, 255, 255);
-    box-shadow: 2px 4px #f1efef;
-    &__icon {
-        width: 40px;
-        margin-right: 10px;
-        margin-left: 10px;
-        &__image {
-            width: 40px;
-            margin-right: 5px;
-            margin-left: 5px;
-        }
-    }
-    &__content {
-        color: rgb(59, 56, 56);
+.cards {
+    display: block;
+    width: 100%;
+    height: auto;
+    padding: 0 10px;
+    .card {
+        margin-top: 20px;
+        border-radius: 8px;
+        padding: 10px;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         justify-content: center;
-        height: auto;
-        &__header {
+        align-items: flex-start;
+        width: 100%;
+        border: 1px solid rgb(255, 255, 255);
+        box-shadow: 2px 4px #f1efef;
+        &__icon {
+            display: block;
+            flex-basis: 40px;
+            width: 40px;
+            &--inner {
+                display: block;
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            &--active::before {
+                content: "";
+                display: block;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background-color: rgb(23, 69, 219);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 1;
+            }
+            &--active::after {
+                content: "";
+                width: 18px;
+                height: 10px;
+                border-left: 2px solid #ffffff;
+                border-bottom: 2px solid #ffffff;
+                transform: translate(-50%, -50%) rotate(-45deg);
+                transform-origin: 50% 50%;
+                z-index: 2;
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                pointer-events: none;
+            }
+            &__image {
+                display: block;
+                width: 100%;
+                height: auto;
+            }
+        }
+        &__content {
             color: rgb(59, 56, 56);
             display: flex;
-            flex-direction: row;
-            justify-content: flex-start;
-            height: 20px;
-            &__client {
-                display: flex;
-                font-size: 12px;
-                font-weight: 600;
-                padding-right: 5px;
-            }
-            &__type {
-                display: flex;
-                font-size: 12px;
-                color: rgb(134, 128, 128);
-                font-weight: 600;
-                padding-right: 5px;
-            }
-        }
-        &__main {
-            margin-top: 5px;
-            display: flex;
+            flex-basis: calc(100% - 40px);
             flex-direction: column;
-            justify-content: flex-start;
+            justify-content: center;
+            height: auto;
+            padding-left: 10px;
             &__header {
+                color: rgb(59, 56, 56);
                 display: flex;
-                color: rgb(65, 63, 63);
-                font-size: 18px;
-                font-weight: 600;
-                padding: 0px;
-                margin: 0px;
+                flex-direction: row;
+                justify-content: flex-start;
+                height: 20px;
+                &__client {
+                    display: flex;
+                    font-size: 12px;
+                    font-weight: 600;
+                    padding-right: 5px;
+                    margin: 0;
+                }
+                &__type {
+                    display: flex;
+                    font-size: 12px;
+                    color: rgb(134, 128, 128);
+                    font-weight: 600;
+                    margin: 0;
+                }
             }
-            &__description {
+            &__main {
+                margin-top: 5px;
                 display: flex;
-                font-size: 16px;
-                color: rgb(65, 63, 63);
+                flex-direction: column;
+                justify-content: flex-start;
+                &__title {
+                    display: block;
+                    color: rgb(65, 63, 63);
+                    font-size: 18px;
+                    font-weight: 600;
+                    padding: 0px;
+                    margin: 0px;
+                }
+                &__description {
+                    display: block;
+                    font-size: 16px;
+                    color: rgb(65, 63, 63);
+                }
             }
-        }
-        &__footer {
-            color: rgb(41, 41, 40);
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            &__date {
-                font-weight: 600;
-                font-size: 12px;
+            &__footer {
+                color: rgb(41, 41, 40);
                 display: flex;
-                font-weight: 500;
-            }
-            &__amount {
-                font-weight: 600;
-                font-size: 12px;
-                display: flex;
-                font-weight: 500;
+                flex-direction: row;
+                justify-content: space-between;
+                &__date {
+                    font-weight: 600;
+                    font-size: 12px;
+                    display: block;
+                    font-weight: 500;
+                }
+                &__amount {
+                    font-weight: 600;
+                    font-size: 12px;
+                    display: block;
+                    font-weight: 500;
+                }
             }
         }
     }
-}
-
-.fab-btn {
-    visibility: hidden;
-}
-
-.selectedOne {
-    height: 20px;
-    width: 20px;
-    background-image: url("https://cdn0.iconfinder.com/data/icons/simply-orange-1/128/currencysvg-512.png");
-}
-
-.addClass {
-    background-color: green;
 }

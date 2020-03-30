@@ -15,209 +15,134 @@
     border: transparent;
 }
 
-.card {
-    /* border-radius: 8px; */
-    padding: 5px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
-    width: 98vw;
-    /* border: 1px solid rgb(211, 208, 208); */
-    /* box-shadow: 1px solid blue; */
+.card-header {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 4px 4px 8px 0px rgba(214, 207, 214, 1);
 }
 
-.cardBody {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: flex-start;
-    border-radius: 8px;
-}
-
-.icon {
-    width: 40px;
-    margin-right: 5px;
-    margin-left: 5px;
-}
-
-.cardContainer {
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding-left: 10px;
-}
-
-.cardHeader {
-    color: rgb(59, 56, 56);
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    height: 20px;
-}
-
-.headerClient {
-    font-size: 12px;
-    font-weight: 600;
-    padding-right: 5px;
-}
-
-.headerType {
-    font-size: 12px;
-    color: rgb(134, 128, 128);
-    font-weight: 600;
-    padding-right: 5px;
-}
-
-.cardMain {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}
-
-.mainTitle {
-    color: rgb(65, 63, 63);
-    font-size: 18px;
-    font-weight: 600;
-    padding: 0px;
-    margin: 0px;
-}
-
-.mainDescription {
-    border-top: 1px solid rgb(145, 143, 143);
-    border-bottom: 1px solid rgb(145, 143, 143);
-    padding: 10px 0;
-    margin: 10px 0;
-    font-size: 16px;
-    color: rgb(65, 63, 63);
-}
-
-.cardFooter {
-    color: rgb(41, 41, 40);
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.footerDate {
-    font-weight: 600;
-    font-size: 12px;
-    display: flex;
-    font-weight: 500;
-}
-
-.footerAmount {
-    font-weight: 600;
-    font-size: 12px;
-    display: flex;
-    font-weight: 500;
+.structure {
+    display: block;
+    width: 100%;
+    height: auto;
+    padding: 0 10px;
+    .card {
+        margin-top: 20px;
+        padding: 10px;
+        margin-top: 4px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        width: 100%;
+        text-decoration: none;
+        &__content {
+            color: rgb(59, 56, 56);
+            display: flex;
+            flex-basis: calc(100% - 40px);
+            flex-direction: column;
+            justify-content: center;
+            height: auto;
+            padding-left: 10px;
+            a {
+                text-decoration: none;
+            }
+            &__header {
+                color: rgb(59, 56, 56);
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                height: 20px;
+                &__client {
+                    display: flex;
+                    font-size: 12px;
+                    font-weight: 600;
+                    padding-right: 5px;
+                    color: rgb(134, 128, 128);
+                    margin-bottom: -4px;
+                    margin-top: 5px;
+                }
+                &__type {
+                    display: flex;
+                    font-size: 12px;
+                    color: rgb(134, 128, 128);
+                    font-weight: 600;
+                    margin-bottom: -4px;
+                    margin-top: 5px;
+                }
+            }
+            &__main {
+                margin-top: 5px;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                &__header {
+                    display: block;
+                    color: rgb(65, 63, 63);
+                    font-size: 16px;
+                    font-weight: 600;
+                    padding: 0;
+                    margin: 0px;
+                    border-bottom: 0.5px solid rgba(63, 63, 63, 0.486);
+                    padding-bottom: 12px;
+                }
+                &__description {
+                    display: block;
+                    font-size: 14px;
+                    color: rgb(65, 63, 63);
+                    margin-top: 2px;
+                    margin-bottom: 20px;
+                    border-bottom: 0.5px solid rgba(63, 63, 63, 0.486);
+                    padding-bottom: 12px;
+                }
+            }
+            &__footer {
+                color: rgb(41, 41, 40);
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                &__date {
+                    font-weight: 600;
+                    font-size: 12px;
+                    display: block;
+                    font-weight: 500;
+                    margin-top: 8px;
+                    margin-bottom: 2px;
+                }
+                &__amount {
+                    font-weight: 600;
+                    font-size: 12px;
+                    display: block;
+                    font-weight: 500;
+                    margin-top: 8px;
+                    margin-bottom: 2px;
+                    padding: 5px;
+                    border-radius: 8px;
+                    background-color: rgba(234, 239, 243, 0.356);
+                }
+            }
+        }
+    }
 }
 
 .actionBtns {
     display: flex;
-    justify-content: center;
-}
-
-.aceptBtn {
-    border-radius: 8px;
-    width: 100px;
-    height: 30px;
-    background-color: green;
-    color: white;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 100px;
 }
 
 .declineBtn {
     border-radius: 8px;
-    width: 100px;
-    height: 30px;
+    width: 150px;
+    height: 40px;
     background-color: red;
     color: white;
 }
 
-.structure {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.header {
-    color: rgb(235, 232, 232);
-    height: 30px;
-}
-
-.card {
-    margin-top: 20px;
+.acceptBtn {
     border-radius: 8px;
-    padding: 5px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
-    width: 98vw;
-    border: 1px solid rgb(255, 255, 255);
-    box-shadow: 2px 4px #f1efef;
-    &__content {
-        color: rgb(59, 56, 56);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        height: auto;
-        &__header {
-            color: rgb(59, 56, 56);
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-start;
-            height: 20px;
-            &__client {
-                display: flex;
-                font-size: 12px;
-                font-weight: 600;
-                padding-right: 5px;
-            }
-            &__type {
-                display: flex;
-                font-size: 12px;
-                color: rgb(134, 128, 128);
-                font-weight: 600;
-                padding-right: 5px;
-            }
-        }
-        &__main {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            &__header {
-                display: flex;
-                color: rgb(65, 63, 63);
-                font-size: 18px;
-                font-weight: 600;
-                padding: 0px;
-                margin: 0px;
-            }
-            &__description {
-                display: flex;
-                font-size: 16px;
-                color: rgb(65, 63, 63);
-            }
-        }
-        &__footer {
-            color: rgb(41, 41, 40);
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            &__date {
-                font-weight: 600;
-                font-size: 12px;
-                display: flex;
-                font-weight: 500;
-            }
-            &__amount {
-                font-weight: 600;
-                font-size: 12px;
-                display: flex;
-                font-weight: 500;
-            }
-        }
-    }
+    width: 150px;
+    height: 40px;
+    background-color: green;
+    color: white;
 }

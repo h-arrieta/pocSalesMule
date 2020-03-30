@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { ObjectRequest, CardData, TreatCard } from '../../models/models';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-card',
@@ -9,7 +10,11 @@ import { ObjectRequest, CardData, TreatCard } from '../../models/models';
 })
 export class CardComponent implements OnInit {
 
-  constructor( private dataService: DataService) { }
+  constructor( 
+    private dataService: DataService,
+    private route: ActivatedRoute) {
+      // this.route.params.subscribe( params => this.goDetails(params['term'])); (1);
+     }
 
   messages: Array<CardData> = [];
   myOpportunities: any[] = [];
@@ -54,20 +59,6 @@ export class CardComponent implements OnInit {
     console.log(this.displayCards);
  }
 
-//  y(treatment: string ) {
-//     this.messages.forEach((element) => {
-//       if (element.isTreated === true) {
-//         element.treatment = treatment;
-//       }
-//     // tslint:disable-next-line: align
-//     }); console.log("soy y function", this.messages);
-//     this.treatmentPending = false;
-   
-    
-  
-  
-    
-//  }
 
 accept() {
   let arrRequestObjects:Array < ObjectRequest > = [];
@@ -98,32 +89,9 @@ reject() {
 
 }
 
+// goDetails(term:string) {
+//   this.router.navigate(['search', {term: term}]);
 
 
-
-
-
-// z() {
-//   this.treatmentOnes = [];
-//   // tslint:disable-next-line: prefer-for-of
-//   for (let i = 0; i < element.length; i++) {
-//     if (element[i].treatment !== null) {
-//       this.treatmentOnes.push(element[i]);
-//     // tslint:disable-next-line: align
-//     }console.log(this.treatmentOnes);
-//   }
 // }
-
-// z(treatment: string) {
-//   this.displayCards.forEach((element) => {
-//     if(element.treatment === "accepted") {
-//       // tslint:disable-next-line: no-unused-expression
-//       this.treatmentOnes.push(element); 
-//     } 
-//   });
-//   console.log("ESTA OPORTUNIDAD HA SIDO TRATADA", this.treatmentOnes);
-//   console.log("RESTO DE OPPS", this.messages);
-// }
-
-
 }

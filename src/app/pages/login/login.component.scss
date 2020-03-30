@@ -30,11 +30,6 @@
     color: rgb(88, 20, 20);
 }
 
-.placeholder {
-    /* border: none; */
-    width: 80vw;
-}
-
 .loginHeader {
     height: 250px;
     width: 80vw;
@@ -50,41 +45,9 @@
     align-items: center;
 }
 
-.placeholder {
-    color: rgb(187, 177, 177);
-    /* border-top: black;
-    border-left: black;
-    border-right: black;
-    border-bottom: none; */
-}
-
-.form {
-    padding-bottom: 100px;
-}
-
-input:focus {
-    outline: none;
-}
-
-form::placeholder {
-    color: rgb(133, 29, 29);
-}
-
-input {
-    border-top-style: hidden;
-    border-right-style: hidden;
-    border-left-style: hidden;
-    border-bottom-style: groove;
-    background-color: rgb(255, 255, 255);
-}
-
 .structure {
     display: flex;
     justify-content: center;
-}
-
-.formFirstPlace {
-    margin-bottom: 25px;
 }
 
 h1 {
@@ -97,4 +60,56 @@ h4 {
     font-weight: 400;
     font-size: 22px;
     color: rgb(95, 94, 94);
+}
+
+form {
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-field {
+    position: relative;
+    width: 80vw;
+    height: 10px;
+    line-height: 44px;
+    margin-bottom: 100px;
+}
+
+label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: #d3d3d3;
+    transition: 0.2s all;
+    cursor: text;
+}
+
+input {
+    width: 100%;
+    border: 0;
+    outline: 0;
+    padding: 0.5rem 0;
+    border-bottom: 2px solid #d3d3d3;
+    box-shadow: none;
+    color: #111;
+}
+
+input:invalid {
+    outline: 0;
+    // color: #ff2300;
+    //   border-color: #ff2300;
+}
+
+input:focus,
+input:valid {
+    border-color: #00dd22;
+}
+
+input:focus~label,
+input:valid~label {
+    font-size: 14px;
+    top: -24px;
+    color: #00dd22;
 }

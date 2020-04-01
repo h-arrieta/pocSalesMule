@@ -13,12 +13,16 @@
 }
 
 .inputBtn {
+    position: absolute;
+    right: 20px;
+    bottom: -22px;
     border: none;
     border-radius: 8px;
     width: 80vw;
     height: 44px;
-    background-color: blue;
+    background-color: #79D0A3;
     color: white;
+    display: block;
 }
 
 .inputBtn--state-success {
@@ -48,24 +52,34 @@
 .structure {
     display: flex;
     justify-content: center;
+    background-color: #263D59;
 }
 
 h1 {
     font-size: 44px;
     font-weight: 400;
-    color: rgb(95, 94, 94);
+    color: rgb(231, 231, 231);
 }
 
 h4 {
     font-weight: 400;
     font-size: 22px;
-    color: rgb(95, 94, 94);
+    color: rgb(214, 210, 210);
 }
 
 form {
-    width: 80vw;
+    // position: absolute;
+    width: 90vw;
+    height: 300px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 8px;
+    background-color: white;
+    position: relative;
 }
 
 .input-field {
@@ -87,13 +101,15 @@ label {
 }
 
 input {
-    width: 100%;
+    width: 80vw;
     border: 0;
     outline: 0;
     padding: 0.5rem 0;
     border-bottom: 2px solid #d3d3d3;
     box-shadow: none;
     color: #111;
+    display: flex;
+    justify-content: center;
 }
 
 input:invalid {
@@ -112,4 +128,15 @@ input:valid~label {
     font-size: 14px;
     top: -24px;
     color: #00dd22;
+}
+
+.userIcon {
+    display: flex;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+}
+
+.companyName {
+    color: #79D0A3;
 }

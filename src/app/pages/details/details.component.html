@@ -1,6 +1,6 @@
 <ion-content>
 
-    <ion-header>
+    <ion-header class="pageHader">
         <ion-toolbar>
             <ion-buttons slot="start">
                 <ion-back-button defaultHref="/card"></ion-back-button>
@@ -17,13 +17,9 @@
                     <p class="card__content__header__type">{{ mensaje.opportunity.type }}</p>
                 </div>
                 <div class="card__content__main">
-                    <div>
-                        <h2 class="card__content__main__header">{{ mensaje.opportunity.Name }}</h2>
-                    </div>
+                    <p class="card__content__main__name">{{ mensaje.opportunity.Asunto__c }}</p>
                     <!-- <div class="card__content__main__description" [ngClass]="{'show-less': showShortDesciption}"> -->
-                    <div class="card__content__main__description">
-                        <p>{{ mensaje.opportunity.Description }}</p>
-                    </div>
+                    <p class="card__content__main__description">{{ mensaje.opportunity.Description }}</p>
                     <!-- <button class="readMore" type="button" (click)="alterDescriptionText()">
                 {{ showShortDesciption ? 'SHOW ALL': 'SHOW LESS' }}
               </button> -->

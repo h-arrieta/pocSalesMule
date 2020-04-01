@@ -1,3 +1,7 @@
+.pageHeader {
+    background-color: #6200EE;
+}
+
 .show-less {
     height: 50px;
     overflow: hidden;
@@ -23,17 +27,19 @@
 .structure {
     display: block;
     width: 100%;
-    height: auto;
+    height: 100%;
     padding: 0 10px;
     .card {
         margin-top: 20px;
-        padding: 10px;
+        padding: 5px;
+        padding-top: 40px;
         margin-top: 4px;
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: flex-start;
         width: 100%;
+        height: 100%;
         text-decoration: none;
         &__content {
             color: rgb(59, 56, 56);
@@ -42,6 +48,7 @@
             flex-direction: column;
             justify-content: center;
             height: auto;
+            width: 100%;
             padding-left: 10px;
             a {
                 text-decoration: none;
@@ -54,17 +61,17 @@
                 height: 20px;
                 &__client {
                     display: flex;
-                    font-size: 12px;
+                    font-size: 14px;
                     font-weight: 600;
                     padding-right: 5px;
-                    color: rgb(134, 128, 128);
+                    color: rgb(107, 104, 104);
                     margin-bottom: -4px;
                     margin-top: 5px;
                 }
                 &__type {
                     display: flex;
-                    font-size: 12px;
-                    color: rgb(134, 128, 128);
+                    font-size: 14px;
+                    color: rgb(65, 63, 63);
                     font-weight: 600;
                     margin-bottom: -4px;
                     margin-top: 5px;
@@ -75,10 +82,10 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: flex-start;
-                &__header {
+                &__name {
                     display: block;
                     color: rgb(65, 63, 63);
-                    font-size: 16px;
+                    font-size: 20px;
                     font-weight: 600;
                     padding: 0;
                     margin: 0px;
@@ -89,10 +96,10 @@
                     display: block;
                     font-size: 14px;
                     color: rgb(65, 63, 63);
-                    margin-top: 2px;
-                    margin-bottom: 20px;
+                    margin-top: 12px;
+                    margin-bottom: 25px;
                     border-bottom: 0.5px solid rgba(63, 63, 63, 0.486);
-                    padding-bottom: 12px;
+                    padding-bottom: 22px;
                 }
             }
             &__footer {
@@ -102,7 +109,7 @@
                 justify-content: space-between;
                 &__date {
                     font-weight: 600;
-                    font-size: 12px;
+                    font-size: 14px;
                     display: block;
                     font-weight: 500;
                     margin-top: 8px;
@@ -110,7 +117,7 @@
                 }
                 &__amount {
                     font-weight: 600;
-                    font-size: 12px;
+                    font-size: 14px;
                     display: block;
                     font-weight: 500;
                     margin-top: 8px;
@@ -128,21 +135,22 @@
     display: flex;
     justify-content: space-around;
     align-items: flex-end;
+    align-items: flex-end;
     height: 100px;
 }
 
 .declineBtn {
     border-radius: 8px;
-    width: 150px;
+    width: 160px;
     height: 40px;
-    background-color: red;
+    background-color: #eb445a;
     color: white;
 }
 
 .acceptBtn {
     border-radius: 8px;
-    width: 150px;
+    width: 160px;
     height: 40px;
-    background-color: green;
+    background-color: #2dd36f;
     color: white;
 }

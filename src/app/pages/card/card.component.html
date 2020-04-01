@@ -2,17 +2,19 @@
     <ion-title>Oportunities</ion-title>
 </ion-header> -->
 <ion-content>
-    <ion-card-header class="card-header">My opportunities</ion-card-header>
+    <ion-header class="pageHeader">
+        <ion-toolbar>
+            <ion-title>Opportunity</ion-title>
+        </ion-toolbar>
+    </ion-header>
     <div class="cards">
         <!-- *ngIf="!message.isTreated || message.treatment !== null" -->
         <ng-container *ngFor="let displayCard of displayCards">
             <div class="card">
                 <div class="card__icon">
                     <div class="card__icon--inner" [ngClass]="{'card__icon--active': displayCard.isTreated }">
-                        <!-- <button (click)=changeTreatStatus(displayCard.cardData.opportunity.Id)>treated</button> -->
-                        <!-- <button (click)=x(message.opportunity.id, 'accepted')>treated</button> -->
-                        <!-- <svg (click)="changeTreatStatus(displayCard.cardData.opportunity.Id)" class="card__icon__image" xmlns="src\app\public\images\dollar-icon.svg"></svg> -->
-                        <img (click)="changeTreatStatus(displayCard.cardData.opportunity.Id)" class="card__icon__image" src="/assets/images/dollar-icon.svg">
+                        <img *ngIf="displayCard.cardData.opportunity.approval_type__c.toLowerCase()==='budget'" (click)="changeTreatStatus(displayCard.cardData.opportunity.Id)" class="card__icon__image" src="/assets/images/dollar-icon.svg">
+                        <img *ngIf="displayCard.cardData.opportunity.approval_type__c.toLowerCase()==='overtime'" (click)="changeTreatStatus(displayCard.cardData.opportunity.Id)" class="card__icon__image" src="/assets/images/calendar-icon.svg">
                     </div>
                 </div>
                 <div class="card__content">
@@ -30,14 +32,75 @@
                             <p class="card__content__footer__date"> {{ displayCard.cardData.opportunity.CloseDate }}</p>
                             <p class="card__content__footer__amount">{{ displayCard.cardData.opportunity.Amount }} €</p>
                         </div>
+
                     </a>
                 </div>
             </div>
-            <!-- <button type="button" class="btn btn-primary" (click)="goDetails(search.value)">
-        Search
-</button> -->
         </ng-container>
+        <div *ngIf="!displayCards">
 
+            <div class="ion-padding custom-skeleton">
+                <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+                <ion-skeleton-text animated></ion-skeleton-text>
+                <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+                <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+                <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+            </div>
+
+            <ion-list>
+                <ion-list-header>
+                    <ion-label>
+                        <ion-skeleton-text animated style="width: 20%"></ion-skeleton-text>
+                    </ion-label>
+                </ion-list-header>
+                <ion-item>
+                    <ion-avatar slot="start">
+                        <ion-skeleton-text animated></ion-skeleton-text>
+                    </ion-avatar>
+                    <ion-label>
+                        <h3>
+                            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+                        </h3>
+                        <p>
+                            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+                        </p>
+                        <p>
+                            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+                        </p>
+                    </ion-label>
+                </ion-item>
+                <ion-item>
+                    <ion-thumbnail slot="start">
+                        <ion-skeleton-text animated></ion-skeleton-text>
+                    </ion-thumbnail>
+                    <ion-label>
+                        <h3>
+                            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+                        </h3>
+                        <p>
+                            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+                        </p>
+                        <p>
+                            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+                        </p>
+                    </ion-label>
+                </ion-item>
+                <ion-item>
+                    <ion-skeleton-text animated style="width: 27px; height: 27px" slot="start"></ion-skeleton-text>
+                    <ion-label>
+                        <h3>
+                            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+                        </h3>
+                        <p>
+                            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+                        </p>
+                        <p>
+                            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+                        </p>
+                    </ion-label>
+                </ion-item>
+            </ion-list>
+        </div>
 
     </div>
 </ion-content>
@@ -47,13 +110,11 @@
             <ion-icon name="arrow-up-circle"></ion-icon>
         </ion-fab-button>
         <ion-fab-list side="top">
-            <ion-fab-button (click)="reject();">
-                <!-- <ion-fab-button> -->
-                <ion-icon color="danger" name="close-outline">X</ion-icon>
+            <ion-fab-button color="danger" (click)="reject();">
+                <ion-icon name="close-outline"></ion-icon>
             </ion-fab-button>
-            <ion-fab-button (click)="accept();">
-                <!-- <ion-fab-button> -->
-                <ion-icon color="succes" name="checkmark-outline">X</ion-icon>
+            <ion-fab-button color="success" (click)="accept();">
+                <ion-icon name="checkmark-outline"></ion-icon>
             </ion-fab-button>
         </ion-fab-list>
     </ion-fab>

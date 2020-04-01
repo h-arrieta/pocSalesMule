@@ -1,40 +1,24 @@
 <div class="structure">
     <div class="loginContainer">
         <div class="loginHeader">
-            <!-- <div class="imageContainer">
-                <img class="image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAYFBMVEX///8mmvIAk/HU6fwAlPEAkfEfmPITlvItnfLF4Pv6/f+o0fnq9P3h7/3k8f1jsfWKwve12PpNqPRrtPWPxfe+3fpAo/N6u/ajzvharfTN5PuXyfjx+P4+ovNyt/Wr0/k17swMAAAFG0lEQVR4nO3d2ZqCIBgG4CAEMy211Cyr+7/LwZZp0xJlf/73bObIbxCQdWYzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgkCiK42Q+nydJE5l+FtmSYlfVR4T/sbBcp8t9bPrBZGgW2xxjwihFFD3wnxghmKwPe6fLMzmUjIdD/XhOVi8dLcvV4YjZl3BPKYN82Zh+XGFZPizePSTb7E0/soh4y8i3d7MzJA6XrlTJuPpe93oxtnUhY1zhUfFuGQ+mn/+XKJ2QD7UVEp1NZ/iqQALNS09GUiamY/Rq1tMK8C5ITSfpkY1rXzqwo43FGG3kFOBVsDOd50MSTq6BL0htWceRYan5OBpa9aZupQfk8MJ0rIcNURCQR7SmMuZyq+BTREu6DWUBecTKdLhWKbGT+EAsiJirDGjDi6rwFb1FNDzaOKlpRV8iZiYDHlT0gx8RDc5vFDoC8jGjsbm4RP0reo14NBQwCvUE5KOpk5mEJ9XN6AMuTASUP5z4wkRVbKSN6Iegtf6Ea50BtfSK0SpZPa37LXS+o6idglM55k/OVX5d/AtQnmar9nfa2tE7puwbPNmGmP0v/lFKGTnumqW+dvQOz5XkW9S4o0Uh+vPxP26uIF+Sy5whnErBvM2UNRYFaCk5n+wZ0OkkF2Kh6bNagNyauAtM5+kgszndae7Qh6HyxhiZjSXIEVlbNuZWliDHJC0QR6aD9JPUYWgeNojAUhakdA8bRMjZq4HsLUI5r6mBYYMALGE6I7S5CBGbPtbXM8s7Gt1MTlhbXYSIhlMDNnYXIa+Iq4kJM6vbGSShIlZ2v6T8NZ26ZFqaTvDL5Llh+8a979iUeNH+YHs15E3N6BFUc66xkWlCQWMH+kU9cnO2dmzMSlu0C4X31hvDRuwFOzBHiu9CfAC1CF3Kx7sLwSWaaGP7Z9o7uhYKuLd6uNtJrMs/BM4FFBvmr+3/gvkksD06Kh3o3ztQzKpBG8Gio4Nv6A3F6PDz4y1SuvNVOcpw9WMsrHjnqwYUn76Vo8YtW+rQL+sYdq6eCaN43bPNxtrFJWF9fYfp55Ip6BpNVT5Uwn946fE7evV5lM/9juINfmtSLV+ZGCN43WlzNP08CpDn7xubl3hHe1mw8a4WXpDHZH/iYxGi52nU1Ku+8Mn/sRP3JmYGImc/e/sHSq8JHVh6Ges2Ge5nS3px7TEif4uQ18SF19UQ3WbDrd+IMAnmA/6tv9UQXfdpnLxO2O6Szk0/hFJta+rjyOkJjr2agurA+wvTj6AYW/qekKb6D0bqxRtTz1saVPv84d2ipc1HKaQIZ6nnCdFs5/WXd1uGCxd3XwzH6+HK5/EhattSf6faLto9b343pu2+xbPXTQ1bzGYrS8+/ynE5bmL9cYMJKGrnE3ce9xfXY1+NxwlvJ4Y2/ramQeP72sx997DlJwzHI/e9Q74W4rUlvfD0u+bpqEnsZSFS+rRN0cs+kbxsjHJ7B3S31yPQsTsHuYZ6P7RX+PYBTj6OByu5J96crktcvdjKftd9EW/tUcSg+wyNPxF7r/6sPekWg8+N3nepD80N/Xp5q9a7gBUh3+8atO9yREEs/HnXiWUXXIqh+DTg8t156eyryujA2weyo5MZGUmH355clJi69bJShlOxa7/mKSXOhKQUh79PyX6Iigph6++PaC+jxigdfZFpnG3rI8P2ImF9u1B8iqhZtf962UYry/4ZGwAAAAAAAAAAAAAAAAAAAAAAAAAAAACAaf4AKcd7qAq2BDsAAAAASUVORK5CYII=">
-            </div> -->
-
-            <h4 class="companyName">SF ACCELERATOR</h4>
             <h1>Welcome back</h1>
             <h4>Please login to continue</h4>
-
-        </div>
-        <div>
         </div>
         <div>
             <form>
-                <!-- <div class="input-field">
-                    <input type="text" id="name" required />
-                    <label for="name">Username:</label>
-                </div> -->
                 <div class="input-field">
-                    <input type="text" id="name" required />
-                    <label for="name">Username:</label>
-                    <!-- <img class="userIcon" src="/assets/images/account.svg"> -->
+                    <input type="text" #user (input)="updateUsername(user.value)" required />
+                    <label for="name"><img class="userIcon" src="/assets/images/account.svg">&nbsp;Username:</label>
+
                 </div>
                 <div class="input-field">
-                    <input type="password" id="name" required />
-                    <label for="name">Password:</label>
-                    <!-- <img class="userIcon" src="/assets/images/password.svg"> -->
-
+                    <input type="password" required />
+                    <label for="name"> <img class="userIcon" src="/assets/images/password.svg">&nbsp;Password:</label>
                 </div>
                 <div>
-                    <input routerLink="/card" routerLinkActive="active" class="inputBtn" type="submit" value="LOGIN">
+                    <button (click)="login()" class="inputBtn" type="button">LOGIN</button>
                 </div>
-
             </form>
         </div>
     </div>
-
 </div>

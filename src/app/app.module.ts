@@ -13,15 +13,25 @@ import { HttpClientModule } from '@angular/common/http'
 import { CardComponent } from './pages/card/card.component';
 import { DetailsComponent } from './pages/details/details.component';
 import { LoginComponent } from './pages/login/login.component';
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
+import { SharedService } from './services/shared.service';
+import { DataService } from './services/data.service';
+
+
+// the second parameter 'fr-FR' is optional
+registerLocaleData(localeEs, 'es-ES');
 
 
 @NgModule({
-  declarations: [AppComponent , CardComponent, DetailsComponent, LoginComponent],
+  declarations: [AppComponent, CardComponent, DetailsComponent, LoginComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
   providers: [
     StatusBar,
     SplashScreen,
+    SharedService,
+    DataService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

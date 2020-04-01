@@ -1,14 +1,12 @@
+<ion-header class="pageHader">
+    <ion-toolbar class="new-background-color">
+        <ion-buttons slot="start">
+            <ion-back-button color="light" defaultHref="/card">Opportunity</ion-back-button>
+        </ion-buttons>
+        <!-- <ion-title class="new-font-color">Opportunity detail</ion-title> -->
+    </ion-toolbar>
+</ion-header>
 <ion-content>
-
-    <ion-header class="pageHader">
-        <ion-toolbar>
-            <ion-buttons slot="start">
-                <ion-back-button defaultHref="/card"></ion-back-button>
-            </ion-buttons>
-            <ion-title>Opportunity detail</ion-title>
-        </ion-toolbar>
-    </ion-header>
-
     <div class="structure">
         <div *ngIf="mensaje" class="card">
             <div class="card__content">
@@ -26,24 +24,20 @@
                 </div>
                 <div class="card__content__footer">
                     <div>
-                        <p class="card__content__footer__phase">FASE 1</p>
+                        <p class="card__content__footer__phase"></p>
                     </div>
                     <div>
                         <p class="card__content__footer__date">Close Date: {{ mensaje.opportunity.CloseDate }}</p>
-                        <p class="card__content__footer__amount">Amount {{ mensaje.opportunity.Amount }} €</p>
+                        <p class="card__content__footer__amount">Total amount: {{ mensaje.opportunity.Amount | number:'1.0-0':'es-ES'}}€</p>
                     </div>
-                </div>
-                <div class="actionBtns">
-                    <button class="declineBtn">Rechazar</button>
-                    <button class="acceptBtn">Aceptar</button>
                 </div>
             </div>
         </div>
     </div>
 </ion-content>
-<!-- <ion-footer>
+<ion-footer>
     <div class="actionBtns">
         <button class="declineBtn">Rechazar</button>
         <button class="acceptBtn">Aceptar</button>
     </div>
-</ion-footer> -->
+</ion-footer>

@@ -1,12 +1,9 @@
-<!-- <ion-header>
-    <ion-title>Oportunities</ion-title>
-</ion-header> -->
-<ion-content>
-    <ion-header class="pageHeader">
-        <ion-toolbar>
-            <ion-title>Opportunity</ion-title>
-        </ion-toolbar>
-    </ion-header>
+<ion-header>
+    <ion-toolbar class="new-background-color">
+        <ion-title class="pageHeaderTitle"> My Opportunities</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content class="generalContent">
     <div class="cards">
         <!-- *ngIf="!message.isTreated || message.treatment !== null" -->
         <ng-container *ngFor="let displayCard of displayCards">
@@ -19,7 +16,6 @@
                 </div>
                 <div class="card__content">
                     <a routerLink="/card/{{displayCard.cardData.opportunity.Id}}">
-
                         <div class="card__content__header">
                             <p class="card__content__header__client">{{ displayCard.cardData.opportunity.Name }}</p>
                             <p class="card__content__header__type card__content__header__type--state-budget">{{ displayCard.cardData.opportunity.approval_type__c }}</p>
@@ -30,9 +26,8 @@
                         </div>
                         <div class="card__content__footer">
                             <p class="card__content__footer__date"> {{ displayCard.cardData.opportunity.CloseDate }}</p>
-                            <p class="card__content__footer__amount">{{ displayCard.cardData.opportunity.Amount }} €</p>
+                            <p class="card__content__footer__amount">{{ displayCard.cardData.opportunity.Amount | number:'1.0-0':'es-ES'}} €</p>
                         </div>
-
                     </a>
                 </div>
             </div>

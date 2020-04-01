@@ -2,16 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { ObjectRequest, CardData, TreatCard } from '../../models/models';
 import { ActivatedRoute } from '@angular/router';
+import { SharedService } from '../../services/shared.service';
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
+
 })
 export class CardComponent implements OnInit {
 
   constructor( 
     private dataService: DataService,
+    private _shareService: SharedService,
     private route: ActivatedRoute) {
       // this.route.params.subscribe( params => this.goDetails(params['term'])); (1);
      }
@@ -24,10 +27,12 @@ export class CardComponent implements OnInit {
   treatmentOnes: any[] = [];
   displayCards: Array<TreatCard> = [];
   isChecked = false;
+  username:any;
 
   ngOnInit() {
     // tslint:disable-next-line: align
-    this.dataService.getData()
+    this.username = this._shareService.getSharedData();
+    this.dataService.getData(this.username.username)
     .subscribe( (post: Array<CardData>) => {
       this.messages = post;
       this.opportunities();

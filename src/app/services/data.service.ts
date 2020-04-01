@@ -8,10 +8,9 @@ import { ObjectRequest } from '../models/models';
 export class DataService {
 
   constructor(private http: HttpClient) { }
-  getData() {
+  getData(user:string) {
     // tslint:disable-next-line: max-line-length
-    return this.http.get('http://techedge-sys-sfdcoppapprovals-v1.ir-e1.cloudhub.io/opportunity/approvals?principal=luis.zarzo@techedgegroup.com.poc');
-    // return this.http.get('http://techedge-sys-sfdcoppapprovals-v1.ir-e1.cloudhub.io/opportunity/approvals?principal=' + user);
+    return this.http.get('http://techedge-sys-sfdcoppapprovals-v1.ir-e1.cloudhub.io/opportunity/approvals?principal=' + user);
   }
   // hay que hacerlo de modo dinámico
   postData(reqArr: Array<ObjectRequest>) {

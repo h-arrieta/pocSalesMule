@@ -50,10 +50,12 @@ export class CardComponent implements OnInit {
     }
   }
   
+ 
   getOpps() {
     this.dataService.getData(this.username.username)
-    .subscribe( (post: Array<CardData>) => {
+    .subscribe((post: Array<CardData>) => {
       this.messages = post;
+      this.displayCards = [];
       this.opportunities();
     });
   }

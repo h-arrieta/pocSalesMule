@@ -13,12 +13,12 @@ export class DataService {
     return this.http.get('http://techedge-sys-sfdcoppapprovals-v1.ir-e1.cloudhub.io/api/opportunity/approvals?principal=' + user);
   }
   // hay que hacerlo de modo dinámico
-  postData(reqArr: Array<ObjectRequest>) {
+  postData(reqArr: Array<ObjectRequest>, user:string) {
     // tslint:disable-next-line: max-line-length
-    // return this.http
-    // .post<any>('http://techedge-sys-sfdcoppapprovals-v1.ir-e1.cloudhub.io/opportunity/aprove?principal=luis.zarzo@techedgegroup.com.poc', {
-    //   'requests': reqArr
-    // }).subscribe(data => { console.log(data); });
+    return this.http
+    .post<any>('http://techedge-sys-sfdcoppapprovals-v1.ir-e1.cloudhub.io/api/opportunity/approve?principal=' + user, {
+      'requests': reqArr
+    }).subscribe(data => { console.log(data); });
     return "Hola";
   }
 

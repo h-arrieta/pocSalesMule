@@ -33,22 +33,28 @@ export class CardComponent implements OnInit {
   username:any;
 
   ngOnInit() {
+    console.log(this.displayCards);
     // tslint:disable-next-line: align
     this.username = this._shareService.getSharedData();
+    this.getOpps();
+  }
+
+  opportunities() {
+    if (this.messages.length > 0) {
+      this.messages.forEach((element: CardData) => {
+        let auxObj = {} as TreatCard;
+        auxObj.cardData = element;
+        auxObj.isTreated = false;
+        this.displayCards.push(auxObj);
+      });
+    }
+  }
+  
+  getOpps() {
     this.dataService.getData(this.username.username)
     .subscribe( (post: Array<CardData>) => {
       this.messages = post;
       this.opportunities();
-      // this.z();
-    });
-  }
-
-  opportunities() {
-    this.messages.forEach((element: CardData) => {
-      let auxObj = {} as TreatCard;
-      auxObj.cardData = element;
-      auxObj.isTreated = false;
-      this.displayCards.push(auxObj);
     });
   }
 
@@ -68,7 +74,7 @@ export class CardComponent implements OnInit {
  }
 
 
-  async accept() {
+async accept(user:string) {
   let arrRequestObjects:Array < ObjectRequest > = [];
   this.displayCards.forEach((element:TreatCard) => {
     if (element.isTreated === true) {
@@ -79,7 +85,7 @@ export class CardComponent implements OnInit {
       arrRequestObjects.push(aux);
     }
   });
-  this.dataService.postData(arrRequestObjects);
+  this.dataService.postData(arrRequestObjects, this.username.username);
   const toast =   await this.toastController.create({
     message: 'Your opportunity was accepted',
     duration: 1500,
@@ -87,9 +93,10 @@ export class CardComponent implements OnInit {
     cssClass: 'toastStyle'
   });
   toast.present();
+  setTimeout(()=> this.getOpps(), 1500);
 }
 
-async reject() {
+async reject(user:string) {
   let arrRequestObjects:Array < ObjectRequest > = [];
   this.displayCards.forEach((element:TreatCard) => {
     if (element.isTreated === true) {
@@ -98,9 +105,10 @@ async reject() {
       aux.contextId = element.cardData.approvalId;
       aux.comments = "this record was rejected";
       arrRequestObjects.push(aux);
+      console.log(aux);
     }
   });
-  this.dataService.postData(arrRequestObjects);
+  this.dataService.postData(arrRequestObjects, this.username.username);
   const toast =   await this.toastController.create({
     message: 'Your opportunity was rejected',
     duration: 1500,
@@ -108,12 +116,6 @@ async reject() {
     cssClass: 'toastStyle'
   });
   toast.present();
-
+  setTimeout(()=> this.getOpps(), 1500);
 }
-
-// goDetails(term:string) {
-//   this.router.navigate(['search', {term: term}]);
-
-
-// }
 }

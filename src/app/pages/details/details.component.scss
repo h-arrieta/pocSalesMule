@@ -28,6 +28,10 @@
     box-shadow: 4px 4px 8px 0px rgba(214, 207, 214, 1);
 }
 
+.toastStyle {
+    color: blue;
+}
+
 .structure {
     display: block;
     width: 100%;
@@ -61,13 +65,15 @@
                 display: flex;
                 flex-direction: row;
                 justify-content: flex-start;
-                height: 20px;
+                height: 30px;
+                border-bottom: 0.5px solid rgba(63, 63, 63, 0.486);
+                padding-bottom: 8px;
                 &__client {
                     display: flex;
                     font-size: 14px;
-                    font-weight: 600;
+                    font-weight: 500;
                     padding-right: 5px;
-                    color: rgb(107, 104, 104);
+                    color: rgb(65, 63, 63);
                     margin-bottom: -4px;
                     margin-top: 5px;
                 }
@@ -75,7 +81,7 @@
                     display: flex;
                     font-size: 14px;
                     color: rgb(65, 63, 63);
-                    font-weight: 600;
+                    font-weight: 500;
                     margin-bottom: -4px;
                     margin-top: 5px;
                 }
@@ -112,7 +118,7 @@
                 justify-content: space-between;
                 padding-bottom: 20px;
                 &__date {
-                    font-weight: bold;
+                    font-weight: 600;
                     font-size: 14px;
                     display: block;
                     margin-top: 8px;
@@ -120,9 +126,10 @@
                     padding: 5px;
                     border-radius: 8px;
                     background-color: rgba(234, 239, 243, 0.356);
+                    color: #413f3f;
                 }
                 &__amount {
-                    font-weight: bold;
+                    font-weight: 600;
                     font-size: 14px;
                     display: block;
                     margin-top: 8px;
@@ -130,6 +137,7 @@
                     padding: 5px;
                     border-radius: 8px;
                     background-color: rgba(234, 239, 243, 0.356);
+                    color: #413f3f;
                 }
             }
         }

@@ -1,13 +1,13 @@
 <div class="structure">
     <div class="loginContainer">
         <div class="loginHeader">
-            <h1>Welcome back</h1>
-            <h4>Please login to continue</h4>
+            <h1 class="mainTitle">Welcome back</h1>
+            <h4 class="secondTitle">Please login to continue</h4>
         </div>
         <div>
             <form>
                 <div class="input-field">
-                    <input type="text" #user (input)="updateUsername(user.value)" required />
+                    <input type="text" #user required (input)="updateUsername(user.value)" />
                     <label for="name"><img class="userIcon" src="/assets/images/account.svg">&nbsp;Username:</label>
 
                 </div>

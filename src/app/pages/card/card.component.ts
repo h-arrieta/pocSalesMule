@@ -3,6 +3,8 @@ import { DataService } from 'src/app/services/data.service';
 import { ObjectRequest, CardData, TreatCard } from '../../models/models';
 import { ActivatedRoute } from '@angular/router';
 import { SharedService } from '../../services/shared.service';
+import { ToastController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-card',
@@ -15,6 +17,7 @@ export class CardComponent implements OnInit {
   constructor( 
     private dataService: DataService,
     private _shareService: SharedService,
+    public toastController: ToastController,
     private route: ActivatedRoute) {
       // this.route.params.subscribe( params => this.goDetails(params['term'])); (1);
      }
@@ -65,7 +68,7 @@ export class CardComponent implements OnInit {
  }
 
 
-accept() {
+  async accept() {
   let arrRequestObjects:Array < ObjectRequest > = [];
   this.displayCards.forEach((element:TreatCard) => {
     if (element.isTreated === true) {
@@ -77,9 +80,16 @@ accept() {
     }
   });
   this.dataService.postData(arrRequestObjects);
+  const toast =   await this.toastController.create({
+    message: 'Your opportunity was accepted',
+    duration: 1500,
+    color: 'success',
+    cssClass: 'toastStyle'
+  });
+  toast.present();
 }
 
-reject() {
+async reject() {
   let arrRequestObjects:Array < ObjectRequest > = [];
   this.displayCards.forEach((element:TreatCard) => {
     if (element.isTreated === true) {
@@ -91,6 +101,13 @@ reject() {
     }
   });
   this.dataService.postData(arrRequestObjects);
+  const toast =   await this.toastController.create({
+    message: 'Your opportunity was rejected',
+    duration: 1500,
+    color: 'danger',
+    cssClass: 'toastStyle'
+  });
+  toast.present();
 
 }
 

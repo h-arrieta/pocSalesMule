@@ -3,7 +3,7 @@
         <ion-title class="pageHeaderTitle"> My Opportunities</ion-title>
     </ion-toolbar>
 </ion-header>
-<ion-content class="generalContent">
+<ion-content ngClass='generalContent'>
     <div class="cards">
         <!-- *ngIf="!message.isTreated || message.treatment !== null" -->
         <ng-container *ngFor="let displayCard of displayCards">
@@ -108,7 +108,7 @@
             <ion-fab-button color="danger" (click)="reject();">
                 <ion-icon name="close-outline"></ion-icon>
             </ion-fab-button>
-            <ion-fab-button color="success" (click)="accept();">
+            <ion-fab-button color="success" (click)="accept()">
                 <ion-icon name="checkmark-outline"></ion-icon>
             </ion-fab-button>
         </ion-fab-list>

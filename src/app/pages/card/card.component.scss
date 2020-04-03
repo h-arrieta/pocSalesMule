@@ -7,8 +7,21 @@
 }
 
 .generalContent {
-    background-color: blue;
-    color: red;
+    --background: rgb(247, 247, 247);
+}
+
+.footerIconsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footerIcons {
+    width: 20px;
+}
+
+.footerIconDollar {
+    width: 16px;
 }
 
 .cards {

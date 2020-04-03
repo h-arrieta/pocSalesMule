@@ -6,21 +6,10 @@
     color: white;
 }
 
-.show-less {
-    height: 50px;
-    overflow: hidden;
-    padding: 1rem;
-}
-
-.readMore {
-    font-size: 10px;
-    color: rgba(73, 131, 170, 0.781);
-    background-color: transparent;
-}
-
-.readMore:disabled {
-    background-color: transparent;
-    border: transparent;
+.footerContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .card-header {
@@ -30,6 +19,15 @@
 
 .toastStyle {
     color: blue;
+}
+
+.footerIcons {
+    width: 14px;
+    height: 14px;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3px;
 }
 
 .structure {
@@ -115,7 +113,7 @@
                 color: rgb(41, 41, 40);
                 display: flex;
                 flex-direction: row;
-                justify-content: space-between;
+                justify-content: flex-end;
                 padding-bottom: 20px;
                 &__date {
                     font-weight: 600;
@@ -161,10 +159,34 @@
     color: white;
 }
 
+.declineBtn:active {
+    border: none;
+    outline: none;
+    box-shadow: 0 2px rgb(207, 72, 54);
+    transform: translateY(1px);
+}
+
+.declineBtn {
+    border: none;
+    outline: none;
+}
+
 .acceptBtn {
     border-radius: 8px;
     width: 160px;
     height: 40px;
     background-color: #2dd36f;
     color: white;
+}
+
+.acceptBtn:active {
+    border: none;
+    outline: none;
+    box-shadow: 0 2px rgb(61, 182, 75);
+    transform: translateY(1px);
+}
+
+.acceptBtn:focus {
+    border: none;
+    outline: none;
 }

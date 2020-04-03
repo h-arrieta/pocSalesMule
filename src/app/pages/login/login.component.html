@@ -1,24 +1,29 @@
-<div class="structure">
-    <div class="loginContainer">
-        <div class="loginHeader">
-            <h1 class="mainTitle">Welcome back</h1>
-            <h4 class="secondTitle">Please login to continue</h4>
-        </div>
-        <div>
-            <form>
-                <div class="input-field">
-                    <input type="text" #user required (input)="updateUsername(user.value)" />
-                    <label for="name"><img class="userIcon" src="/assets/images/account.svg">&nbsp;Username:</label>
+<ion-content>
+    <div class="structure">
+        <div id='stars'></div>
+        <div id='stars2'></div>
+        <div id='stars3'></div>
+        <div class="loginContainer">
+            <div class="loginHeader">
+                <img class="loginIcon" src="assets/images/icon-techedge.svg">
+                <h1 class="mainTitle">Welcome</h1>
+            </div>
+            <div>
+                <form>
+                    <div class="input-field">
+                        <input type="text" #user (input)="updateUsername(user.value)" [ngClass]="{'valid': user.value !=''}" />
+                        <label for="name"><img class="userIcon" src="/assets/images/account.svg">&nbsp;Username:</label>
 
-                </div>
-                <div class="input-field">
-                    <input type="password" required />
-                    <label for="name"> <img class="userIcon" src="/assets/images/password.svg">&nbsp;Password:</label>
-                </div>
-                <div>
-                    <button (click)="login()" class="inputBtn" type="button">LOGIN</button>
-                </div>
-            </form>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" #pass (input)="updatePassword(pass.value)" [ngClass]="{'valid': pass.value !=''}" />
+                        <label for="name"> <img class="userIcon" src="/assets/images/password.svg">&nbsp;Password:</label>
+                    </div>
+                    <div>
+                        <button (click)="login()" class="inputBtn" type="button">LOGIN</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
+</ion-content>

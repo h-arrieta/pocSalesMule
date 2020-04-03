@@ -23,12 +23,16 @@
               </button> -->
                 </div>
                 <div class="card__content__footer">
+
                     <div>
-                        <p class="card__content__footer__phase"></p>
-                    </div>
-                    <div>
-                        <p class="card__content__footer__date">Close Date: {{ mensaje.opportunity.CloseDate }}</p>
-                        <p class="card__content__footer__amount">Total amount: {{ mensaje.opportunity.Amount | number:'1.0-0':'es-ES'}}€</p>
+                        <div class="footerContent">
+                            <img class="footerIcons" src="https://img.icons8.com/dotty/80/000000/date-to.png">
+                            <p class="card__content__footer__date">Close Date: {{ mensaje.opportunity.CloseDate }}</p>
+                        </div>
+                        <div class="footerContent">
+                            <img class="footerIcons" src="https://img.icons8.com/small/16/000000/euro-pound-exchange.png">
+                            <p class="card__content__footer__amount">Total amount: {{ mensaje.opportunity.Amount | number:'1.0-0':'es-ES'}}€</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -37,7 +41,9 @@
 </ion-content>
 <ion-footer>
     <div class="actionBtns">
-        <button class="declineBtn" (click)="presentToastReject()">Rechazar</button>
-        <button class="acceptBtn" (click)="presentToastAccept()">Aceptar</button>
+        <button class="declineBtn">Rechazar</button>
+        <button class="acceptBtn">Aceptar</button>
+        <!-- <button class="declineBtn" (click)="presentToastReject()">Rechazar</button>
+        <button class="acceptBtn" (click)="presentToastAccept()">Aceptar</button> -->
     </div>
 </ion-footer>

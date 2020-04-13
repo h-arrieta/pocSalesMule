@@ -41,8 +41,8 @@
 </ion-content>
 <ion-footer>
     <div class="actionBtns">
-        <button class="declineBtn">Rechazar</button>
-        <button class="acceptBtn">Aceptar</button>
+        <button class="declineBtn" (click)="rejectDetails();">Rechazar</button>
+        <button class="acceptBtn" (click)="acceptDetails();">Aceptar</button>
         <!-- <button class="declineBtn" (click)="presentToastReject()">Rechazar</button>
         <button class="acceptBtn" (click)="presentToastAccept()">Aceptar</button> -->
     </div>

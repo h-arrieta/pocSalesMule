@@ -13,13 +13,20 @@ export class DataService {
     return this.http.get('http://techedge-sys-sfdcoppapprovals-v1.ir-e1.cloudhub.io/api/opportunity/approvals?principal=' + user);
   }
   // hay que hacerlo de modo dinámico
-  postData(reqArr: Array<ObjectRequest>, user:string) {
+  async postData(reqArr: Array<ObjectRequest>, user:string) {
+    let status:string;
     // tslint:disable-next-line: max-line-length
-    return this.http
+    await this.http
     .post<any>('http://techedge-sys-sfdcoppapprovals-v1.ir-e1.cloudhub.io/api/opportunity/approve?principal=' + user, {
       'requests': reqArr
-    }).subscribe(data => { console.log(data); });
-    return "Hola";
+    }).subscribe(response => { 
+      if (response.statusSalesforce === '200') {
+        status = 'OK';
+      } else {
+        status = 'NOK';
+      }
+    }); 
+    return status;
   }
 
   // postData() {

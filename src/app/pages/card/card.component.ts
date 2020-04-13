@@ -125,7 +125,7 @@ export class CardComponent implements OnInit {
  }
 
 
-async accept(user:string) {
+async accept(id: string) {
   let arrRequestObjects:Array < ObjectRequest > = [];
   this.displayCards.forEach((element:TreatCard) => {
     if (element.isTreated === true) {
@@ -136,7 +136,15 @@ async accept(user:string) {
       arrRequestObjects.push(aux);
     }
   });
-  this.dataService.postData(arrRequestObjects, this.username.username);
+  
+  let status = await this.dataService.postData(arrRequestObjects, this.username.username);
+  if (status === 'OK') {
+    this.displayCards.forEach((element:TreatCard, index:number) => {
+      if (element.isTreated === true) {
+        this.displayCards.splice(index, 1);
+      }
+    });
+  }
   const toast =   await this.toastController.create({
     message: 'Your opportunity was accepted',
     duration: 1500,
@@ -147,7 +155,7 @@ async accept(user:string) {
   setTimeout(()=> this.getOpps(), 1500);
 }
 
-async reject(user:string) {
+async reject(id: string) {
   let arrRequestObjects:Array < ObjectRequest > = [];
   this.displayCards.forEach((element:TreatCard) => {
     if (element.isTreated === true) {
@@ -159,7 +167,14 @@ async reject(user:string) {
       console.log(aux);
     }
   });
-  this.dataService.postData(arrRequestObjects, this.username.username);
+  let status = await this.dataService.postData(arrRequestObjects, this.username.username);
+  if (status === 'OK') {
+    this.displayCards.forEach((element:TreatCard, index:number) => {
+      if (element.isTreated === true) {
+        this.displayCards.splice(index, 1);
+      }
+    });
+  }
   const toast =   await this.toastController.create({
     message: 'Your opportunity was rejected',
     duration: 1500,

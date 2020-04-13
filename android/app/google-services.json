@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "759897980113",
+    "firebase_url": "https://com-sfdcmule-poc.firebaseio.com",
+    "project_id": "com-sfdcmule-poc",
+    "storage_bucket": "com-sfdcmule-poc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:759897980113:android:26376cce23ffa9bccc59f0",
+        "android_client_info": {
+          "package_name": "com.sfdcmule.poc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "759897980113-s1146davpvkmt9ae867h8cj954g8upi9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtlVo1os9EaODp_2GlKYODmuZJZvWEzWE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "759897980113-s1146davpvkmt9ae867h8cj954g8upi9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

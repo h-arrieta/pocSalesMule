@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
+import { ObjectRequest, CardData, TreatCard, Opportunity } from '../../models/models';
 import { ActivatedRoute } from '@angular/router';
 import { SharedService } from '../../services/shared.service';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
-import { ObjectRequest, CardData, TreatCard } from '../../models/models';
 
 
 
@@ -16,17 +16,17 @@ import { ObjectRequest, CardData, TreatCard } from '../../models/models';
 export class DetailsComponent implements OnInit {
 
   mensajes: any[] = [];
-  mensaje: any;
+  mensaje: CardData;
   location: any;
   username: any;
   displayCards: Array<TreatCard> = [];
   messages: Array<CardData> = [];
   router: any;
-  
+
   // tslint:disable-next-line: variable-name
   // tslint:disable-next-line: max-line-length
   constructor(private dataService: DataService, private route: ActivatedRoute, private _shareService: SharedService,  private _router: Router, public toastController: ToastController) {}
-  showShortDesciption = true;
+
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     console.log('Esto es el ID', id);
@@ -36,9 +36,9 @@ export class DetailsComponent implements OnInit {
       .subscribe( (posts: any[]) => {
         this.mensajes = posts;
         // aqui es donde hacemos la seleccion que corresponda con el id
-        console.log(this.mensajes);
+        console.log('ESTO SON MENSAJES', this.mensajes);
         this.mensaje = this.getCardById(id);
-        console.log(this.mensaje);
+        console.log('ESTO ES EL MENSAJE', this.mensaje);
       });
     }
 
@@ -47,11 +47,10 @@ export class DetailsComponent implements OnInit {
   }
 
   opportunities() {
-    if (this.messages.length > 0) {
-      this.messages.forEach((element: CardData) => {
-        let auxObj = {} as TreatCard;
+    if (this.mensajes.length > 0) {
+      this.mensajes.forEach((element: CardData) => {
+        const auxObj = {} as TreatCard;
         auxObj.cardData = element;
-        auxObj.isTreated = false;
         this.displayCards.push(auxObj);
       });
     }
@@ -66,69 +65,91 @@ export class DetailsComponent implements OnInit {
     });
 }
 
-  async acceptDetails(id: string) {
-    let arrRequestObjects:Array < ObjectRequest > = [];
-    this.mensajes.forEach((element:any) => {
-      if (element.mensaje.Id === id) {
-        let aux = {} as ObjectRequest; 
-        aux.actionType = "Approve";
-        aux.contextId = element.approvalId;
-        aux.comments = "this record was approved";
-        arrRequestObjects.push(aux);
+  // async acceptDetails() {
+  //   const arrRequestObjects: Array < ObjectRequest > = [];
+  //   const aux = {
+  //     actionType : 'Approve',
+  //     contextId : this.mensaje.approvalId,
+  //     comments : 'this record was approved'
+  //     };
+  //   arrRequestObjects.push(aux);
+  //   console.log(arrRequestObjects);
+
+
+  //   const status = await this.dataService.postData(arrRequestObjects, this.username.username);
+  //   if (status === 'OK') {
+  //     const toast = await this.toastController.create({
+  //       message: 'Your opportunity was accepted successfully',
+  //       duration: 1500,
+  //       color: 'success',
+  //       cssClass: 'toastStyle'
+  //     });
+  //     toast.present();
+  //     setTimeout(() => this.gotoCards(), 2000);
+  //   } else {
+  //     const toast = await this.toastController.create({
+  //       message: 'Upps.. Something went wrong',
+  //       duration: 1500,
+  //       color: 'warning',
+  //       cssClass: 'toastStyle'
+  //     });
+  //     toast.present();
+  //   }
+  // }
+
+  acceptDetails() {
+    const arrRequestObjects: Array < ObjectRequest > = [];
+    const aux = {
+      actionType : 'Approve',
+      contextId : this.mensaje.approvalId,
+      comments :  'this record was approved'
+      };
+    arrRequestObjects.push(aux);
+    console.log(arrRequestObjects);
+
+    this.dataService.postData(arrRequestObjects, this.username.username).subscribe( response => {
+      if (response.statusSalesforce === 200) { 
+        this.showToast('Your opportunity was accepted successfully', 'success');
+        setTimeout(() => this.gotoCards(), 2000);
+      } else {
+        this.showToast('Upps.. Something went wrong', 'warning');
       }
     });
-    
-    let status = await this.dataService.postData(arrRequestObjects, this.username.username);
-    if (status === 'OK') {
-      this.mensajes.forEach((element:any, index:number) => {
-        if (element.mensaje.Id === id) {
-          element.splice(index, 1);
-        } 
-      });
-    }
-    const toast = await this.toastController.create({
-      message: 'Your opportunity was accepted',
-      duration: 1500,
-      color: 'success',
-      cssClass: 'toastStyle'
-    });
-    toast.present();
-    setTimeout(()=> this.getOpps(), 1500);
-    this.gotoCards();
   }
 
-  async rejectDetails(id: string) {
-    let arrRequestObjects:Array < ObjectRequest > = [];
-    this.mensajes.forEach((element:any) => {
-      if (element.mensaje.Id === id) {
-        let aux = {} as ObjectRequest; 
-        aux.actionType = "Rejected";
-        aux.contextId = element.approvalId;
-        aux.comments = "this record was rejected";
-        arrRequestObjects.push(aux);
+
+
+  rejectDetails() {
+    const arrRequestObjects: Array < ObjectRequest > = [];
+    const aux = {
+      actionType : 'Reject',
+      contextId : this.mensaje.approvalId,
+      comments : 'this record was rejected'
+      };
+    arrRequestObjects.push(aux);
+    console.log(arrRequestObjects);
+
+    this.dataService.postData(arrRequestObjects, this.username.username).subscribe( response => {
+      if (response.statusSalesforce === 200) { 
+        this.showToast('Your opportunity was rejected successfully', 'danger');
+        setTimeout(() => this.gotoCards(), 2000);
+      } else {
+        this.showToast('Upps.. Something went wrong', 'warning');
       }
     });
-    
-    let status = await this.dataService.postData(arrRequestObjects, this.username.username);
-    if (status === 'OK') {
-      this.mensajes.forEach((element:any, index:number) => {
-        if (element.mensaje.Id === id) {
-          element.splice(index, 1);
-        }
-      });
-    }
+  }
+
+
+  async showToast(message: string, color: string) {
     const toast = await this.toastController.create({
-      message: 'Your opportunity was rejected',
+      message,
       duration: 1500,
-      color: 'danger',
+      color,
       cssClass: 'toastStyle'
     });
     toast.present();
-    setTimeout(()=> this.getOpps(), 1500);
-    this.gotoCards();
-    
   }
-  
+
   gotoCards() {
     this._router.navigateByUrl('/card');
   }

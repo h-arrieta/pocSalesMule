@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { ObjectRequest, CardData, TreatCard } from '../../models/models';
 import { ActivatedRoute } from '@angular/router';
@@ -19,7 +19,7 @@ const { PushNotifications } = Plugins;
   styleUrls: ['./card.component.scss'],
 
 })
-export class CardComponent implements OnInit {
+export class CardComponent {
 
   constructor( 
     private dataService: DataService,
@@ -39,12 +39,14 @@ export class CardComponent implements OnInit {
   isChecked = false;
   username:any;
 
-  ngOnInit() {
+
+  ionViewWillEnter() {
     console.log(this.displayCards);
     // tslint:disable-next-line: align
     this.username = this._shareService.getSharedData();
     this.getOpps(); 
   }
+   
 
   opportunities() {
     if (this.messages.length > 0) {
@@ -147,63 +149,57 @@ export class CardComponent implements OnInit {
  }
 
 
-async accept(id: string) {
-  let arrRequestObjects:Array < ObjectRequest > = [];
-  this.displayCards.forEach((element:TreatCard) => {
-    if (element.isTreated === true) {
-      let aux = {} as ObjectRequest; 
-      aux.actionType = "Approve";
-      aux.contextId = element.cardData.approvalId;
-      aux.comments = "this record was approved";
-      arrRequestObjects.push(aux);
-    }
-  });
+  accept(id: string) {
+    let arrRequestObjects:Array < ObjectRequest > = [];
+    this.displayCards.forEach((element:TreatCard) => {
+      if (element.isTreated === true) {
+        let aux = {} as ObjectRequest; 
+        aux.actionType = "Approve";
+        aux.contextId = element.cardData.approvalId;
+        aux.comments = "this record was approved";
+        arrRequestObjects.push(aux);
+      }
+    });
+    
+    this.dataService.postData(arrRequestObjects, this.username.username).subscribe( response => {
+      if (response.statusSalesforce === 200) { 
+        this.showToast('Your opportunity was accepted successfully', 'success');
+      } else {
+        this.showToast('Upps.. Something went wrong', 'warning');
+      }
+    });
+    setTimeout(()=> this.getOpps(), 1500);
+  }
   
-  let status = await this.dataService.postData(arrRequestObjects, this.username.username);
-  if (status === 'OK') {
-    this.displayCards.forEach((element:TreatCard, index:number) => {
+  async reject(id: string) {
+    let arrRequestObjects:Array < ObjectRequest > = [];
+    this.displayCards.forEach((element:TreatCard) => {
       if (element.isTreated === true) {
-        this.displayCards.splice(index, 1);
+        let aux = {} as ObjectRequest; 
+        aux.actionType = "Reject";
+        aux.contextId = element.cardData.approvalId;
+        aux.comments = "this record was rejected";
+        arrRequestObjects.push(aux);
+        console.log(aux);
       }
     });
+    this.dataService.postData(arrRequestObjects, this.username.username).subscribe( response => {
+      if (response.statusSalesforce === 200) { 
+        this.showToast('Your opportunity was rejected successfully', 'danger');
+      } else {
+        this.showToast('Upps.. Something went wrong', 'warning');
+      }
+    });
+    setTimeout(() => this.getOpps(), 1500); // TODO: 
   }
-  const toast =   await this.toastController.create({
-    message: 'Your opportunity was accepted',
-    duration: 1500,
-    color: 'success',
-    cssClass: 'toastStyle'
-  });
-  toast.present();
-  setTimeout(()=> this.getOpps(), 1500);
-}
 
-async reject(id: string) {
-  let arrRequestObjects:Array < ObjectRequest > = [];
-  this.displayCards.forEach((element:TreatCard) => {
-    if (element.isTreated === true) {
-      let aux = {} as ObjectRequest; 
-      aux.actionType = "Reject";
-      aux.contextId = element.cardData.approvalId;
-      aux.comments = "this record was rejected";
-      arrRequestObjects.push(aux);
-      console.log(aux);
-    }
-  });
-  let status = await this.dataService.postData(arrRequestObjects, this.username.username);
-  if (status === 'OK') {
-    this.displayCards.forEach((element:TreatCard, index:number) => {
-      if (element.isTreated === true) {
-        this.displayCards.splice(index, 1);
-      }
+  async showToast(message: string, color: string) {
+    const toast = await this.toastController.create({
+      message,
+      duration: 1500,
+      color,
+      cssClass: 'toastStyle'
     });
+    toast.present();
   }
-  const toast =   await this.toastController.create({
-    message: 'Your opportunity was rejected',
-    duration: 1500,
-    color: 'danger',
-    cssClass: 'toastStyle'
-  });
-  toast.present();
-  setTimeout(()=> this.getOpps(), 1500);
-}
 }

@@ -70,6 +70,22 @@ export class CardComponent implements OnInit {
     });
   }
 
+  subscribeTokenToTopic(token, topic) {
+    fetch('https://iid.googleapis.com/iid/v1/'+token+'/rel/topics/'+topic, {
+      method: 'POST',
+      headers: new Headers({
+        'Authorization': 'key=AAAAsO1y_NE:APA91bEdF3obX987LA6vc1msUhzGcrnBLisbwvNrvnsAqZmqaSH2apXxcKSdB8fp3tFH0vyLu7w4eF55PVeUVBPRpK9FgH-X3YxY6cHcQZiAbGy1Gp_v0d-04ZkQ8tnsywrTcd83bx85'
+      })
+    }).then(response => {
+      if (response.status < 200 || response.status >= 400) {
+        throw 'Error subscribing to topic: '+response.status + ' - ' + response.text();
+      }
+      console.log('Subscribed to "'+topic+'"');
+    }).catch(error => {
+      console.error(error);
+    })
+  }
+
   subscribePushNotifications(){
     console.log('Initializing HomePage');
 
@@ -89,6 +105,7 @@ export class CardComponent implements OnInit {
     PushNotifications.addListener('registration', 
       (token: PushNotificationToken) => {
         console.log('Push registration success, token: ' + token.value);
+        this.subscribeTokenToTopic(token.value,'sfdcmulepoc');
       }
     );
 

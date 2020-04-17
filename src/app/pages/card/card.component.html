@@ -26,11 +26,13 @@
                         </div>
                         <div class="card__content__footer">
                             <div class="footerIconsContainer">
-                                <img class="footerIcons" src="https://img.icons8.com/dotty/80/000000/date-to.png">
+                                <!-- <img class="footerIcons" src="https://img.icons8.com/dotty/80/000000/date-to.png"> -->
+                                <ion-icon name="calendar-outline"></ion-icon>
                                 <p class="card__content__footer__date"> {{ displayCard.cardData.opportunity.CloseDate }}</p>
                             </div>
                             <div class="footerIconsContainer">
-                                <img class="footerIconDollar" src="https://img.icons8.com/small/16/000000/euro-pound-exchange.png">
+                                <!-- <img class="footerIconDollar" src="https://img.icons8.com/small/16/000000/euro-pound-exchange.png"> -->
+                                <ion-icon name="cash-outline"></ion-icon>
                                 <p class="card__content__footer__amount">{{ displayCard.cardData.opportunity.Amount | number:'1.0-0':'es-ES'}} €</p>
                             </div>
                         </div>
@@ -108,15 +110,18 @@
 <ion-footer>
     <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="isChecked === true">
         <ion-fab-button>
-            <ion-icon name="arrow-up-circle"></ion-icon>
+            <!-- <ion-icon name="arrow-up-circle"></ion-icon> -->
+            <ion-icon name="ellipsis-vertical-outline"></ion-icon>
         </ion-fab-button>
         <ion-fab-list side="top">
-            <ion-fab-button color="danger" (click)="reject();">
-                <ion-icon name="close-outline"></ion-icon>
+            <ion-fab-button color="danger" data-desc="Rechazar" (click)="reject();">
+                <ion-icon class="rejectIcon" name="close-circle-outline"></ion-icon>
+
             </ion-fab-button>
-            <ion-fab-button color="success" (click)="accept()">
-                <ion-icon name="checkmark-outline"></ion-icon>
+            <ion-fab-button color="success" data-desc="Aceptar" (click)="accept()">
+                <ion-icon class="acceptIcon" name="checkmark-circle-outline"></ion-icon>
             </ion-fab-button>
         </ion-fab-list>
     </ion-fab>
+
 </ion-footer>

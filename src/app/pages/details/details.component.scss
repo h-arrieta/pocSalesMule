@@ -6,10 +6,28 @@
     color: white;
 }
 
+.footerContainer {
+    height: 92px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
 .footerContent {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 2px;
+    padding-left: 10px;
+    height: 32px;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+.acceptIcon,
+.rejectIcon {
+    width: 24px;
+    height: 24px;
 }
 
 .card-header {
@@ -121,9 +139,9 @@
                     display: block;
                     margin-top: 8px;
                     margin-bottom: 2px;
-                    padding: 5px;
-                    border-radius: 8px;
-                    background-color: rgba(234, 239, 243, 0.356);
+                    // padding: 5px;
+                    // padding-top: 5px;
+                    padding-left: 5px;
                     color: #413f3f;
                 }
                 &__amount {
@@ -132,9 +150,9 @@
                     display: block;
                     margin-top: 8px;
                     margin-bottom: 2px;
-                    padding: 5px;
-                    border-radius: 8px;
-                    background-color: rgba(234, 239, 243, 0.356);
+                    // padding: 5px;
+                    // padding-top: 5px;
+                    padding-left: 5px;
                     color: #413f3f;
                 }
             }

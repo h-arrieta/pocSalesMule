@@ -4,6 +4,7 @@ import { ObjectRequest, CardData, TreatCard } from '../../models/models';
 import { ActivatedRoute } from '@angular/router';
 import { SharedService } from '../../services/shared.service';
 import { ToastController } from '@ionic/angular';
+import { ChangeDetectorRef } from '@angular/core'
 
 import {
   Plugins,
@@ -22,6 +23,7 @@ const { PushNotifications } = Plugins;
 export class CardComponent {
 
   constructor( 
+    private changeRef: ChangeDetectorRef,
     private dataService: DataService,
     private _shareService: SharedService,
     public toastController: ToastController,
@@ -45,6 +47,7 @@ export class CardComponent {
     // tslint:disable-next-line: align
     this.username = this._shareService.getSharedData();
     this.getOpps(); 
+    
   }
    
 
@@ -56,6 +59,9 @@ export class CardComponent {
         auxObj.isTreated = false;
         this.displayCards.push(auxObj);
       });
+      setTimeout(()=>{
+        this.changeRef.detectChanges();
+      }, 0);
     }
   }
   
@@ -69,6 +75,7 @@ export class CardComponent {
       this.opportunities();
       console.log("SUBSCRBING PUSH NOTIFICATIONS API FIREBASE");
       this.subscribePushNotifications();
+      
     });
   }
 

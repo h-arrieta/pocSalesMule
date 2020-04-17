@@ -12,15 +12,15 @@
                 <form>
                     <div class="input-field">
                         <input type="text" #user (input)="updateUsername(user.value)" [ngClass]="{'valid': user.value !=''}" />
-                        <label for="name"><img class="userIcon" src="/assets/images/account.svg">&nbsp;Username:</label>
+                        <label for="name"><ion-icon name="person-outline"></ion-icon>&nbsp;Username:</label>
 
                     </div>
                     <div class="input-field">
-                        <input type="password" #pass (input)="updatePassword(pass.value)" [ngClass]="{'valid': pass.value !=''}" />
-                        <label for="name"> <img class="userIcon" src="/assets/images/password.svg">&nbsp;Password:</label>
+                        <input type="password" required #pass (input)="updatePassword(pass.value)" [ngClass]="{'valid': pass.value !=''}" />
+                        <label for="name"> <ion-icon name="lock-closed-outline"></ion-icon>&nbsp;Password:</label>
                     </div>
                     <div>
-                        <button (click)="login()" class="inputBtn" type="button">LOGIN</button>
+                        <button (click)="login()" class="inputBtn" type="button">Login</button>
                     </div>
                 </form>
             </div>

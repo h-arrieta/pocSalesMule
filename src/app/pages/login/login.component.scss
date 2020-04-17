@@ -108,20 +108,22 @@
         right: 20px;
         bottom: -22px;
         border: none;
-        border-radius: 8px;
+        border-radius: 10px;
         width: 80vw;
-        height: 44px;
+        height: 48px;
         background-color: #278806;
         color: white;
         display: block;
+        font-size: 16px;
     }
     
     .inputBtn:active {
         background-color: #3e8e41;
-        box-shadow: 0 5px rgb(54, 105, 60);
+        box-shadow: 0 3px #347536;
         transform: translateY(4px);
         border: none;
         outline: none;
+        font-size: 16px;
     }
     
     .inputBtn:focus {
@@ -187,7 +189,7 @@
         align-items: center;
         padding: 20px;
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-        border-radius: 8px;
+        border-radius: 10px;
         background-color: white;
         position: relative;
     }

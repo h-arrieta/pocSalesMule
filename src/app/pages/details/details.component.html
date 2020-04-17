@@ -24,13 +24,15 @@
                 </div>
                 <div class="card__content__footer">
 
-                    <div>
+                    <div class="footerContainer">
                         <div class="footerContent">
-                            <img class="footerIcons" src="https://img.icons8.com/dotty/80/000000/date-to.png">
+                            <!-- <img class="footerIcons" src="https://img.icons8.com/dotty/80/000000/date-to.png"> -->
+                            <ion-icon name="calendar-outline"></ion-icon>
                             <p class="card__content__footer__date">Close Date: {{ mensaje.opportunity.CloseDate }}</p>
                         </div>
                         <div class="footerContent">
-                            <img class="footerIcons" src="https://img.icons8.com/small/16/000000/euro-pound-exchange.png">
+                            <!-- <img class="footerIcons" src="https://img.icons8.com/small/16/000000/euro-pound-exchange.png"> -->
+                            <ion-icon name="cash-outline"></ion-icon>
                             <p class="card__content__footer__amount">Total amount: {{ mensaje.opportunity.Amount | number:'1.0-0':'es-ES'}}€</p>
                         </div>
                     </div>
